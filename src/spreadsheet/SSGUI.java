@@ -23,6 +23,12 @@ public class SSGUI implements ActionListener{
 	private JPanel pnlCenter;
 	private JPanel pnlSouth;
 	
+	//Top Panel Components
+	JPanel panNorthPanel;
+	JTextField txtInputBox;
+	JLabel lblInput;
+	JButton btnUpdate;
+	
 	//Control components
 	private JMenuBar mnbMenu;
 	private JToolBar tbrToolBar;
@@ -88,6 +94,12 @@ public class SSGUI implements ActionListener{
 		pnlCenter = new JPanel();
 		pnlSouth = new JPanel();
 		
+		//Top Panel Components
+		lblInput = new JLabel(" Input:  ");
+		txtInputBox = new JTextField();
+		btnUpdate = new JButton("Update");
+		panNorthPanel = new JPanel();
+		
 		//Menu Bar
 		mnbMenu = new JMenuBar();	//Menu Items
 		
@@ -117,6 +129,13 @@ public class SSGUI implements ActionListener{
 		btnCut = new JButton("Cut");
 		btnPaste = new JButton("Paste");
 		
+		//Build top panel
+		panNorthPanel.setLayout(new BorderLayout());
+		panNorthPanel.add(txtInputBox,BorderLayout.CENTER);
+		panNorthPanel.add(tbrToolBar,BorderLayout.NORTH);
+		panNorthPanel.add(lblInput,BorderLayout.WEST);
+		panNorthPanel.add(btnUpdate,BorderLayout.EAST);
+		
 		//Build center panel		
 		tblGrid = new SSTable(gridObject);//uses the default values on load
 		tblGrid.setFillsViewportHeight(true);
@@ -127,7 +146,7 @@ public class SSGUI implements ActionListener{
 		scrTblScrollPane.setRowHeader(this.tblGrid.getRowHeader());
 		scrTblScrollPane.setBackground(new Color(255,255,255));
 		
-		//Build bottom panel components
+		//Build bottom panel
 		txtMessageBox = new JTextField();
 		
 		//set window properties
@@ -182,7 +201,7 @@ public class SSGUI implements ActionListener{
 		
 		//Add primary window sections to window
 		frmWindow.setJMenuBar(this.mnbMenu);
-		frmWindow.add(tbrToolBar,BorderLayout.NORTH);
+		frmWindow.add(panNorthPanel,BorderLayout.NORTH);
 		frmWindow.add(scrTblScrollPane,BorderLayout.CENTER);
 		frmWindow.add(txtMessageBox,BorderLayout.SOUTH);
 		
